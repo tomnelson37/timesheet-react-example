@@ -3,42 +3,54 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Timesheets.Models;
+using Timesheets.Context;
+using Timesheets.Context.EntityClasses;
 
 namespace Timesheets.Controllers
 {
     [Route("api/[controller]")]
-    public class ValuesController : Controller
+    public class TimesheetController : Controller
     {
-        // GET api/values
+        // GET api/Timesheet
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<TimesheetDTO> Get()
         {
-            return new string[] { "value1", "value2" };
+            // You would inject this normally
+            TimesheetContext context = new TimesheetContext();
+
+            var timesheets = context.Timesheets.Select(x => new TimesheetDTO
+            {
+                CandidateName = x.CandidateName,
+                ClientName = x.ClientName,
+                EndDate = x.EndDate,
+                PlacementType = x.PlacementType,
+                JobTitle = x.JobTitle,
+                StartDate = x.StartDate
+            }).ToList();
+            context.Dispose();
+            return timesheets;
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
 
-        // POST api/values
+        // POST api/Timesheet
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post([FromBody]TimesheetDTO timesheetDTO)
         {
-        }
+            TimesheetContext context = new TimesheetContext();
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            Timesheet timesheet = new Timesheet{
+                CandidateName = timesheetDTO.CandidateName,
+                ClientName = timesheetDTO.ClientName,
+                StartDate = timesheetDTO.StartDate,
+                EndDate = timesheetDTO.EndDate,
+                PlacementType = timesheetDTO.PlacementType,
+                JobTitle = timesheetDTO.JobTitle
+            };
+            context.Add(timesheet);
+            context.SaveChanges();
+            context.Dispose();
         }
     }
 }
+
