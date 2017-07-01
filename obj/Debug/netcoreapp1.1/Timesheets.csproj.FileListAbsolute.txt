@@ -1,0 +1,8 @@
+C:\Users\tomne\OneDrive\Documents\Timesheets\bin\Debug\netcoreapp1.1\Timesheets.deps.json
+C:\Users\tomne\OneDrive\Documents\Timesheets\bin\Debug\netcoreapp1.1\Timesheets.runtimeconfig.json
+C:\Users\tomne\OneDrive\Documents\Timesheets\bin\Debug\netcoreapp1.1\Timesheets.runtimeconfig.dev.json
+C:\Users\tomne\OneDrive\Documents\Timesheets\bin\Debug\netcoreapp1.1\Timesheets.dll
+C:\Users\tomne\OneDrive\Documents\Timesheets\bin\Debug\netcoreapp1.1\Timesheets.pdb
+C:\Users\tomne\OneDrive\Documents\Timesheets\obj\Debug\netcoreapp1.1\Timesheets.AssemblyInfo.cs
+C:\Users\tomne\OneDrive\Documents\Timesheets\obj\Debug\netcoreapp1.1\Timesheets.dll
+C:\Users\tomne\OneDrive\Documents\Timesheets\obj\Debug\netcoreapp1.1\Timesheets.pdb
