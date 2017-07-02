@@ -1,5 +1,4 @@
 var path = require('path')
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var webpack = require('webpack')
 
 module.exports = {
@@ -41,9 +40,9 @@ module.exports = {
         inline: true,
         historyApiFallback: true,
         port: '8081',
-        // proxy requests to /services to our web api running at localhost:5000
+
         proxy: {
-            '/services': 'http://localhost:5000'
+            '/api/': 'http://localhost:5000'
         }
   },
 }

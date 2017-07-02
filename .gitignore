@@ -295,3 +295,5 @@ __pycache__/
 *.xsd.cs
 
 node_modules
+bundle.js
+bundle.js.map
