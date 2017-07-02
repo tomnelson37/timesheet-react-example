@@ -1,0 +1,32 @@
+{
+  "name": "timesheet-client",
+  "version": "1.0.0",
+  "description": "A simple demonstration app for creating timesheet templates.",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack -p",
+    "start": "webpack-dev-server -d"
+  },
+  "keywords": [
+    "timesheet",
+    "example",
+    "react",
+    "webpack"
+  ],
+  "author": "Tom Nelson",
+  "license": "MIT",
+  "dependencies": {
+    "babel-cli": "6.24.1",
+    "babel-core": "6.25.0",
+    "babel-loader": "7.1.1",
+    "babel-preset-es2015": "6.24.1",
+    "babel-preset-react": "6.24.1",
+    "css-loader": "0.28.4",
+    "extract-text-webpack-plugin": "2.1.2",
+    "react": "15.6.1",
+    "react-dom": "15.6.1",
+    "style-loader": "0.18.2",
+    "webpack": "3.0.0",
+    "webpack-dev-server": "2.5.0"
+  }
+}
