@@ -42,7 +42,7 @@ module.exports = {
         port: '8081',
 
         proxy: {
-            '/api/': 'http://localhost:5000'
+            '/api/': 'http://localhost:50078/'
         }
   },
 }

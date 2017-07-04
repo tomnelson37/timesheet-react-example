@@ -1,8 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import App from './App'
+import es6Promise from 'es6-promise'
+es6Promise.polyfill();
+import 'isomorphic-fetch'
 
 ReactDOM.render(
-  <h1>Hello, this is react with HMR!</h1>,
+  <App></App>,
   document.getElementById('content')
 );
 

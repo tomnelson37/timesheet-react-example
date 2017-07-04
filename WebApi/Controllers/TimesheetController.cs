@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Timesheets.Models;
 using Timesheets.Context;
 using Timesheets.Context.EntityClasses;
-
+using Timesheets.Services;
 namespace Timesheets.Controllers
 {
     [Route("api/[controller]")]
@@ -35,7 +35,7 @@ namespace Timesheets.Controllers
 
         // POST api/Timesheet
         [HttpPost]
-        public void Post([FromBody]TimesheetDTO timesheetDTO)
+        public TimesheetDTO Post([FromBody]TimesheetDTO timesheetDTO)
         {
             TimesheetContext context = new TimesheetContext();
 
@@ -50,6 +50,9 @@ namespace Timesheets.Controllers
             context.Add(timesheet);
             context.SaveChanges();
             context.Dispose();
+            TimesheetDateCalculator tdc = new TimesheetDateCalculator(timesheetDTO.PlacementType, timesheetDTO.StartDate, timesheetDTO.EndDate, DayOfWeek.Saturday);
+            timesheetDTO.Timesheets = tdc.GetTimesheets();
+            return timesheetDTO;
         }
     }
 }
