@@ -5,7 +5,9 @@ SPA with react, webpack and a .NET core web API backend.
 Client:
 
 cd client 
+
 npm i
+
 npm start
 
 to run a dev server hosting the client files. Webpack will then watch the files and recompile the application when it notices a file has changed.
