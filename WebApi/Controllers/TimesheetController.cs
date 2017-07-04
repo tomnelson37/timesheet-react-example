@@ -50,7 +50,7 @@ namespace Timesheets.Controllers
             context.Add(timesheet);
             context.SaveChanges();
             context.Dispose();
-            TimesheetDateCalculator tdc = new TimesheetDateCalculator(timesheetDTO.PlacementType, timesheetDTO.StartDate, timesheetDTO.EndDate, DayOfWeek.Saturday);
+            TimesheetDateCalculator tdc = new TimesheetDateCalculator(timesheetDTO.PlacementType, timesheetDTO.StartDate, timesheetDTO.EndDate, DayOfWeek.Monday);
             timesheetDTO.Timesheets = tdc.GetTimesheets();
             return timesheetDTO;
         }

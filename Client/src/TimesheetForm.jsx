@@ -7,22 +7,22 @@ const formStyle = {
     height: '500px',
     padding: '10px',
     margin: '30px'
-}
+};
 
 const inputStyle = {
     margin: '10px 0',
-}
+};
 
 const submitStyle = {
     marginTop: '30px',
     backgroundColor: '#353333',
     color: 'white',
     cursor: 'pointer'
-}
+};
 
 export default class TimesheetForm extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             candidateName: '',
             clientName: '',
@@ -30,16 +30,16 @@ export default class TimesheetForm extends React.Component {
             startDate: new Date().toISOString(),
             endDate: new Date().toISOString(),
             placementType: 'placeholder'
-        }
-        this.callApi = this.callApi.bind(this)
+        };
+        this.callApi = this.callApi.bind(this);
 
         // bind the form to react internal state
-        this.candidateNameChange = (event) => this.setState({ candidateName : event.target.value })
-        this.clientNameChange = (event) => this.setState({ clientName : event.target.value })
-        this.jobTitleChange = (event) => this.setState({ jobTitle : event.target.value })
-        this.startDateChange = (event) => this.setState({ startDate: event.target.value })
-        this.endDateChange = (event) => this.setState({ endDate : event.target.value })
-        this.placementTypeChange = (event) => this.setState({ placementType: event.target.value })
+        this.candidateNameChange = (event) => this.setState({ candidateName : event.target.value });
+        this.clientNameChange = (event) => this.setState({ clientName : event.target.value });
+        this.jobTitleChange = (event) => this.setState({ jobTitle : event.target.value });
+        this.startDateChange = (event) => this.setState({ startDate: event.target.value });
+        this.endDateChange = (event) => this.setState({ endDate : event.target.value });
+        this.placementTypeChange = (event) => this.setState({ placementType: event.target.value });
     }
     render() {
         return <form onSubmit={this.callApi} style={formStyle}>
@@ -64,7 +64,7 @@ export default class TimesheetForm extends React.Component {
     }
 
     callApi(event) {
-        event.preventDefault()
+        event.preventDefault();
         const timesheetInformation = { 
             candidateName: this.state.candidateName,
             clientName: this.state.clientName,
@@ -72,20 +72,20 @@ export default class TimesheetForm extends React.Component {
             startDate: this.state.startDate,
             endDate: this.state.endDate,
             placementType: getPlacementType(this.state.placementType)
-        }
+        };
         const promise = fetch('/api/Timesheet', {
             method: 'POST',
             headers: {
                 'Content-Type' : 'application/json'
             },
             body: JSON.stringify(timesheetInformation)
-        })
+        });
         promise.then((response) => {
             if(response.ok) {
                 response.json().then((data) => {
                     this.props.renderTimesheets(data)
-                })
+                });
             } 
-        })
+        });
     }
 }

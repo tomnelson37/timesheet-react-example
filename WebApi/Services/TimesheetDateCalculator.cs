@@ -42,7 +42,7 @@ namespace Timesheets.Services {
                     timesheets.Add(timesheet);
 
                     currentDate = currentDate.AddDays(7);
-                    if (endDate < timesheet.EndDate)
+                    if (endDate <= timesheet.EndDate)
                     {
                         break;
                     }
